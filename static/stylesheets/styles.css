@@ -1,3 +1,4 @@
+/* General & Anon-Home */
 body {
   background-color: whitesmoke;
 }
@@ -122,4 +123,99 @@ nav form.navbar-form {
 }
 .home-hero h4 {
   margin-bottom: 1rem;
+}
+
+/* Signup & Login */
+.onboarding > .navbar-brand {
+  margin: 0;
+}
+
+.onboarding .navbar form.navbar-form {
+  display: none;
+}
+
+.onboarding > .navbar a {
+  color: purple;
+}
+
+.onboarding {
+  background-color: rgba(230, 221, 230, 0.658);
+}
+
+.join-message {
+  margin-top: 100px;
+}
+
+/* User Home & User Card */
+#nav-profile-image,
+.card-image {
+  border-radius: 100%;
+  display: block;
+  margin-left: 7px;
+}
+
+.card-image {
+  width: 150px;
+  height: 150px;
+  border: 2px solid plum;
+  margin: 0 auto 10px;
+  margin-top: 18px;
+  z-index: 1;
+  position: relative;
+  box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.24);
+}
+
+.timeline-image {
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  margin-top: 6px;
+}
+
+.user-stats > .ml-auto {
+  display: flex;
+  align-items: center;
+}
+
+.user-stats > .ml-auto .btn {
+  min-width: 100px;
+  padding: 5px 15px;
+}
+
+.stat {
+  text-align: center;
+  height: 65px;
+  box-sizing: border-box;
+  padding: 15px 15px 7px;
+  line-height: 1;
+}
+
+.stat > .small {
+  color: #657786;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  margin-bottom: 0;
+}
+
+.stat > .small + h4 {
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 2px;
+}
+
+.user-card {
+  width: 100%;
+  border-radius: 25px;
+  border: 2px solid purple;
+  padding-bottom: 2%;
+  background: white;
+  box-shadow: 2px 2px 2px plum;
+}
+
+#username {
+  justify-content: center;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
