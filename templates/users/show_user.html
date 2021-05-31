@@ -1,0 +1,51 @@
+{% extends 'users/profile.html' %}
+
+{% block user_details %}
+<div class="col-sm-6">
+    <ul class="list-group" id="posts">
+
+        {% for post in posts %}
+
+        <li class="list-group-item">
+            <a href="/posts/{{ post.id }}" class="post-link"></a>
+            <a href="/users/{{ user.id }}">
+                <img src="{{ user.image_url }}" alt="User image" class="timeline-image">
+            </a>
+
+            <div class="message-area">
+                <a href="/users/{{ user.id }}">~ {{ user.username }} ~</a>
+                <span class="text-muted">{{ post.timestamp.strftime('%d %B %Y') }}</span>
+                <p>{{ post.text }}</p>
+                
+                <img src="{{post.song['album']['images'][2]['url']}}" alt="Song cover art">
+                <div>
+                    <a href="{{post.song['external_urls']['spotify']}}">
+                    {{post.song["name"]}}
+                    </a>
+                    -
+                    <a href="{{post.song['artists'][0]['external_urls']['spotify']}}">
+                    {{post.song["artists"][0]["name"]}}
+                    </a>
+                </div> 
+            </div>
+
+            {% if g.user.id != post.user.id %}
+            <form action="/users/add_like/{{ post.id }}" method="POST" id="posts-form">
+                <button class="btn btn-sm {{ 'btn-primary' if post.id in likes else 'btn-secondary' }}">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+            </form>
+            {% endif %}
+            {% if g.user.id == post.user.id %}
+            <form method="POST" action="/posts/{{ post.id }}/delete">
+                <button class="btn btn-sm btn-danger">
+                  <i class="fas fa-minus-circle"></i>
+                </button>
+            </form>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

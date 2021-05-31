@@ -1,0 +1,104 @@
+body {
+  background-color: whitesmoke;
+}
+
+.form-control {
+  margin-bottom: 18px;
+}
+
+.btn {
+  border-radius: 30px;
+  background-color: plum;
+}
+
+#signup-btn {
+  background-color: plum;
+  border: 1.5px solid purple;
+}
+
+#signup-btn:hover {
+  background-color: purple;
+  color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: plum;
+  height: 50px;
+  border-bottom: 2px solid purple;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 9999;
+}
+
+.navbar a {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: purple;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand > img {
+  display: inline-block;
+  margin: 2px;
+  border-radius: 50px;
+  width: 40px;
+  border: 0.1px solid purple;
+}
+
+ul.nav.navbar-nav {
+  align-items: center;
+}
+
+ul.nav.navbar-nav li {
+  display: flex;
+  margin: 2px;
+}
+
+.nav > li > a > img {
+  display: inline-block;
+  margin: 5px;
+  border-radius: 50px;
+  width: 40px;
+}
+
+nav form.navbar-form {
+  display: flex;
+  position: relative;
+}
+
+#search.form-control {
+  box-sizing: border-box;
+  margin-bottom: 0;
+  width: 100%;
+  font-size: 15px;
+  padding-right: 10px;
+  border-radius: 18px;
+}
+
+#search.form-control + .btn {
+  position: absolute;
+  color: whitesmoke;
+  padding: 0;
+  top: 4px;
+  bottom: 4px;
+  right: 11px;
+  border-radius: 50px;
+}
+
+#search:active,
+#search:focus {
+  box-shadow: none;
+  border: 1.5px solid purple;
+}

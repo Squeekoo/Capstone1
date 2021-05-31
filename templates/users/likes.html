@@ -1,0 +1,29 @@
+{% extends 'users/profile.html' %}
+
+{% block user_details %}
+<div class="col-lg-6 col-md-8 col-sm-12">
+    <ul class="list-group" id="posts">
+        {% for post in likes %}
+        <li class="list-group-item">
+            <a href="/posts/{{ post.id }}" class="post-link"></a>
+            <a href="/users/{{ post.user.id }}">
+                <img src="{{ post.user.image_url }}" alt="User Image" class="timeline-image">
+            </a>
+            <div class="message-area">
+                <a href="/users/{{ post.user.id }}">~ {{ post.user.username }} ~</a>
+                <span class="text-muted">{{ post.timestamp.strftime('%d %B %Y') }}</span>
+                <p>{{ post.text }}</p>
+                <p>{{ post.spotify_url }}</p>
+            </div>
+            {% if user.id == g.user.id %}
+            <form method="POST" action="/users/add_like/{{ post.id }}" id="posts-form">
+                <button class="btn btn-sm {{ 'btn-primary' }}">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+            </form>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

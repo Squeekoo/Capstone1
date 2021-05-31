@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if songs|length == 0 %}
+    <h3>Sorry, no songs were found!</h3>
+{% else %}
+    <div class="row justify-content-end">
+        <div class="col-sm-8">
+            <div class="row">
+                {% for song in songs %}
+                <div class="col-lg-4 col-md-5 col-10">
+                    <div class="card user-card">
+                        <div class="card-inner">
+                            {% if track %}
+                            <div class="card-contents">
+                                <p class="card-bio" id="track-result">{{ track }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

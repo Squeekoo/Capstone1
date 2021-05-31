@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg"></div>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <ul class="list-group no-hover" id="posts">
+            <li class="list-group-item">
+                <a href="{{ url_for('show_user', user_id=post.user.id) }}">
+                    <img src="{{ post.user.image_url }}" alt="User Image" class="timeline-image">
+                </a>
+                <div class="message-area">
+                    <div class="message-heading">
+                        <a href="/users/{{ post.user.id }}">~ {{ post.user.username }} ~</a>
+                        {% if g.user %}
+                            {% if g.user.id == post.user.id %}
+                            <form method="POST" action="/posts/{{ post.id }}/delete">
+                                <button class="btn btn-outline-danger">Delete</button>
+                            </form>
+                            {% elif g.user.is_following(post.user) %}
+                            <form method="POST" action="/users/unfollow/{{ post.user.id }}">
+                                <button class="btn btn-primary">Unfollow</button>
+                            </form>
+                            {% else %}
+                            <form method="POST" action="/users/follow/{{ post.user.id }}">
+                                <button class="btn btn-outline-primary">Follow</button>
+                            </form>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+
+                    <!-- Selected song should be appended to div below -->
+                    <div id="song-results">
+                        <p>{{ post.text }}</p>
+                        
+                        {% if post.spotify_id %}
+                        <img src="{{ song_cover_art}}" id="song-img">
+                        <div>
+                            <a href="{{song_url}}">
+                                {{song_name}}
+                            </a>
+                                 - 
+                            <a href="{{artist_url}}">
+                                {{artist_name}}
+                            </a>
+                        </div>
+                        
+                        {% endif %}
+
+                        <span class="text-muted">{{ post.timestamp.strftime('%d %B %Y') }}</span>
+
+                    </div>
+                    
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

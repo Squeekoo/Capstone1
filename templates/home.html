@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+
+    <aside class="col-md-4 col-lg-3 col-sm-12" id="home-aside">
+      <div class="card user-card">
+        <div>
+          <a href="/users/{{ g.user.id }}" class="card-link">
+            <img src="{{ g.user.image_url }}"
+                 alt="User Image"
+                 class="card-image">
+            <p>~ {{ g.user.username }} ~</p>
+          </a>
+          <ul class="user-stats nav nav-pills">
+            <li class="stat">
+              <p class="small">Posts</p>
+              <h4>
+                <a href="/users/{{ g.user.id }}">{{ g.user.posts | length }}</a>
+              </h4>
+            </li>
+            <li class="stat">
+              <p class="small">Following</p>
+              <h4>
+                <a href="/users/{{ g.user.id }}/following">{{ g.user.following | length }}</a>
+              </h4>
+            </li>
+            <li class="stat">
+              <p class="small">Followers</p>
+              <h4>
+                <a href="/users/{{ g.user.id }}/followers">{{ g.user.followers | length }}</a>
+              </h4>
+            </li>
+            <li class="stat">
+              <p class="small">Likes</p>
+              <h4>
+                <a href="/users/{{ g.user.id }}/likes">{{ g.user.likes | length }}</a>
+              </h4>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <div class="col-lg-6 col-md-8 col-sm-12">
+      <ul class="list-group" id="posts">
+        {% for post in posts %}
+          <li class="list-group-item mb-4">
+            <a href="/posts/{{ post.id  }}" class="post-link"></a>
+            <a href="/users/{{ post.user.id }}">
+              <img src="{{ post.user.image_url }}" alt="User Image" class="timeline-image">
+            </a>
+            <div class="post-area">
+              <a href="/users/{{ post.user.id }}">~ {{ post.user.username }} ~</a>
+              <span class="text-muted">{{ post.timestamp.strftime('%d %B %Y') }}</span>
+              <p>{{ post.text }}</p>
+              
+                                       
+              <img src="{{post.song['album']['images'][2]['url']}}" alt="Song cover art">
+              <div>
+                <a href="{{post.song['external_urls']['spotify']}}">
+                  {{post.song["name"]}}
+                </a>
+                  -
+                <a href="{{post.song['artists'][0]['external_urls']['spotify']}}">
+                  {{post.song["artists"][0]["name"]}}
+                </a>
+              </div>              
+                
+            </div>
+            <form method="POST" action="/users/add_like/{{ post.id }}" id="posts-form">
+              <button class="btn btn-sm {{'btn-primary' if post.id in likes else 'btn-secondary'}}">
+                <i class="fa fa-thumbs-up"></i> 
+              </button>
+            </form>
+            {% if g.user.id == post.user.id %}
+            <form method="POST" action="/posts/{{ post.id }}/delete">
+              <button class="btn btn-sm btn-danger">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </form>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+{% endblock %}

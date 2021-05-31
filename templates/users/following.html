@@ -1,0 +1,37 @@
+{% extends 'users/profile.html' %}
+
+{% block user_details %}
+<div class="col-sm-9">
+    <div class="row">
+
+        {% for followed_user in user.following %}
+        <div class="col-lg-4 col-md-5 col-10">
+            <div class="car user-card">
+                <div class="card-inner">
+                    <div class="card-contents">
+                        <a href="/users/{{ followed_user.id }}" class="card-link">
+                            <img src="{{ followed_user.image_url }}" alt="User Image" class="card-image">
+                            <p>~ {{ followed_user.username }} ~</p>
+                        </a>
+
+                        {% if g.user.is_following(followed_user) %}
+                        <form method="POST" action="/users/unfollow/{{ followed_user.id }}">
+                            <button class="btn btn-primary btn-sm">Unfollow</button>
+                        </form>
+                        {% else %}
+                            {% if g.user.id != followed_user.id %}
+                            <form method="POST" action="/users/follow/{{ followed_user.id }}">
+                                <button class="btn btn-outline-primary btn-sm">Follow</button>
+                            </form>
+                            <p class="card-bio">{{ user.bio }}</p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
