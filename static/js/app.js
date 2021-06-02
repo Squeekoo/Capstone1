@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000"
+const BASE_URL = "http://localhost:5000";
 const songList = $('#song-list');
 const songResults = $("#song-results");
 
@@ -25,11 +25,11 @@ function buildHTML(song, idx) {
     return `
             <li class="eachSong" data-id="${song.id}" data-index="${idx}">
                 <img src="${song.album.images[2].url}" id="song-img">
-                <div>
+                <div class="name-artist">
                     <a href="${song.external_urls.spotify}">
                         ${song.name}
                     </a>
-                    - 
+                    -
                     <a href="${song.artists[0].external_urls.spotify}">
                         ${song.artists[0].name}
                     </a>
@@ -65,9 +65,7 @@ function handleResponse(res) {
         $("#post-form").append(`<input type="hidden" id="json-input" name="song-data" value="${decodeJSONSongData.id}" data-json="${jsonSongData}">`);
 
         $(".select-song").hide();
-        // $(".select-song").html("DESELECT");
-        // $(".select-song").addClass("deselect");
-        // $(".select-song").removeClass("select-song");
+
     };
 };
 

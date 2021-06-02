@@ -44,14 +44,15 @@
     <div class="col-lg-6 col-md-8 col-sm-12">
       <ul class="list-group" id="posts">
         {% for post in posts %}
-          <li class="list-group-item mb-4">
+          <li class="list-group-item mb-1">
             <a href="/posts/{{ post.id  }}" class="post-link"></a>
             <a href="/users/{{ post.user.id }}">
               <img src="{{ post.user.image_url }}" alt="User Image" class="timeline-image">
             </a>
             <div class="post-area">
-              <a href="/users/{{ post.user.id }}">~ {{ post.user.username }} ~</a>
+              <a href="/users/{{ post.user.id }}" id="post-username">~ {{ post.user.username }} ~</a>
               <span class="text-muted">{{ post.timestamp.strftime('%d %B %Y') }}</span>
+              
               <p>{{ post.text }}</p>
               
                                        
@@ -73,7 +74,7 @@
               </button>
             </form>
             {% if g.user.id == post.user.id %}
-            <form method="POST" action="/posts/{{ post.id }}/delete">
+            <form method="POST" action="/posts/{{ post.id }}/delete" id="del-posts-form">
               <button class="btn btn-sm btn-danger">
                 <i class="fas fa-minus-circle"></i>
               </button>

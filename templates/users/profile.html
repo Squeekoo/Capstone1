@@ -2,12 +2,37 @@
 
 {% block content %}
 
-<img src="{{ user.image_url }}" alt="User Image" id="profile-avatar">
-<div class="row full-width">
+<img src="{{ user.image_url }}" alt="User Image" class="card-image">
+<div class="col-sm-3" id="user-info">
+    <h4 id="sidebar-username">~ {{ user.username }} ~</h4>
+    <p>{{ user.bio }}</p>
+    {% if user.location %}
+    <p class="user-location"><span class="fa fa-map-marker">{{ user.location }}</span></p>
+    {% endif %}
+</div>
+<div class="ml-auto" id="profile-btns">
+    {% if g.user.id == user.id %}
+    <a href="/users/profile" class="btn btn-outline-secondary" id="edit-btn">Edit Profile</a>
+    <form method="POST" action="/users/delete" class="form-inline">
+        <button class="btn btn-outline-danger ml-2" id="delete-profile-btn">Delete Profile</button>
+    </form>
+    {% elif g.user %}
+    {% if g.user.is_following(user) %}
+    <form method="POST" action="/users/unfollow/{{ user.id }}">
+        <button class="btn btn-primary">Unfollow</button>
+    </form>
+    {% else %}
+    <form method="POST" action="/users/follow/{{ user.id }}">
+        <button class="btn btn-outline-primary">Follow</button>
+    </form>
+    {% endif %}
+    {% endif %}
+</div>
+<div class="row full-width" id="stats-row">
     <div class="container">
-        <div class="row justify-content-end">
+        <div class="row">
             <div class="col-9">
-                <ul class="user-stats nav nav-pills">
+                <ul class="user-stats nav nav-pills d-flex justify-content-center">
                     <li class="stat">
                         <p class="small">Posts</p>
                         <h4>
@@ -32,38 +57,15 @@
                             <a href="/users/{{ user.id }}/likes">{{ user.likes | length }}</a>
                         </h4>
                     </li>
-                    <div class="ml-auto">
-                        {% if g.user.id == user.id %}
-                        <a href="/users/profile" class="btn btn-outline-secondary">Edit Profile</a>
-                        <form method="POST" action="/users/delete" class="form-inline">
-                            <button class="btn btn-outline-danger ml-2">Delete Profile</button>
-                        </form>
-                        {% elif g.user %}
-                        {% if g.user.is_following(user) %}
-                        <form method="POST" action="/users/unfollow/{{ user.id }}">
-                            <button class="btn btn-primary">Unfollow</button>
-                        </form>
-                        {% else %}
-                        <form method="POST" action="/users/follow/{{ user.id }}">
-                            <button class="btn btn-outline-primary">Follow</button>
-                        </form>
-                        {% endif %}
-                        {% endif %}
-                    </div>
+                    
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-3">
-        <h4 id="sidebar-username">~ {{ user.username }} ~</h4>
-        <p>{{ user.bio }}</p>
-        {% if user.location %}
-        <p class="user-location"><span class="fa fa-map-marker">{{ user.location }}</span></p>
-        {% endif %}
-    </div>
+<div class="row" id="posts-row">
+    
 
     {% block user_details %}
     

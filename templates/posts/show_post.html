@@ -9,12 +9,12 @@
                 <a href="{{ url_for('show_user', user_id=post.user.id) }}">
                     <img src="{{ post.user.image_url }}" alt="User Image" class="timeline-image">
                 </a>
-                <div class="message-area">
-                    <div class="message-heading">
-                        <a href="/users/{{ post.user.id }}">~ {{ post.user.username }} ~</a>
+                <div class="post-area">
+                    <div>
+                        <a href="/users/{{ post.user.id }}" id="post-username">~ {{ post.user.username }} ~</a>
                         {% if g.user %}
                             {% if g.user.id == post.user.id %}
-                            <form method="POST" action="/posts/{{ post.id }}/delete">
+                            <form method="POST" action="/posts/{{ post.id }}/delete" id="del-showPost-form">
                                 <button class="btn btn-outline-danger">Delete</button>
                             </form>
                             {% elif g.user.is_following(post.user) %}
