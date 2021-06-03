@@ -11,22 +11,25 @@
                     <div class="card-contents">
                         <a href="/users/{{ follower.id }}" class="card-link">
                             <img src="{{ follower.image_url }}" alt="User Image" class="card-image">
-                            <p>~ {{ follower.username }} ~</p>
+                            <p id="username">~ {{ follower.username }} ~</p>
                         </a>
-
+                        {% if follower.bio %}
+                        <p class="card-bio">{{ follower.bio }}</p>
+                        {% endif %}
+                        
                         {% if g.user.is_following(follower) %}
-                        <form method="POST" action="/users/unfollow/{{ follower.id }}">
-                            <button class="btn btn-primary btn-sm">Unfollow</button>
+                        <form method="POST" action="/users/unfollow/{{ follower.id }}" id="follow-btns">
+                            <button class="btn btn-primary btn-sm" id="unfollow-btn">Unfollow</button>
                         </form>
                         {% else %}
                             {% if g.user.id != follower.id %}
-                            <form method="POST" action="/users/follow/{{ follower.id }}">
-                                <button class="btn btn-outline-primary btn-sm">Follow</button>
+                            <form method="POST" action="/users/follow/{{ follower.id }}" id="follow-btns">
+                                <button class="btn btn-outline-primary btn-sm" id="follow-btn">Follow</button>
                             </form>
                             {% endif %}
                         {% endif %}
                     </div>
-                    <p class="card-bio">{{ user.bio }}</p>
+                    
                 </div>
             </div>
         </div>

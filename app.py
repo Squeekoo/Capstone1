@@ -309,8 +309,28 @@ def show_user_likes(user_id):
         flash("Oops! You are unauthorized to complete this action.", "danger")
         return redirect("/")
 
+    following_ids = [f.id for f in g.user.following] + [g.user.id]
+
+    filtered_posts = (
+        Post.query.filter(Post.user_id.in_(following_ids))
+        .order_by(Post.timestamp.desc())
+        .limit(50)
+        .all()
+    )
+
+    for post in filtered_posts:
+        post.song = spotify.get_resource(post.spotify_id, resource_type="tracks")
+
+    liked_post_ids = [p.id for p in g.user.likes]
+
     user = User.query.get_or_404(user_id)
-    return render_template("users/likes.html", user=user, likes=user.likes)
+    return render_template(
+        "users/likes.html",
+        user=user,
+        userLikes=user.likes,
+        posts=filtered_posts,
+        likedPostIds=liked_post_ids,
+    )
 
 
 # Delete User

@@ -6,24 +6,27 @@
 
         {% for followed_user in user.following %}
         <div class="col-lg-4 col-md-5 col-10">
-            <div class="car user-card">
+            <div class="card user-card">
                 <div class="card-inner">
                     <div class="card-contents">
                         <a href="/users/{{ followed_user.id }}" class="card-link">
                             <img src="{{ followed_user.image_url }}" alt="User Image" class="card-image">
-                            <p>~ {{ followed_user.username }} ~</p>
+                            <p id="username">~ {{ followed_user.username }} ~</p>
                         </a>
+                        {% if followed_user.bio %}
+                        <p class="card-bio">{{ followed_user.bio }}</p>
+                        {% endif %}
 
                         {% if g.user.is_following(followed_user) %}
-                        <form method="POST" action="/users/unfollow/{{ followed_user.id }}">
-                            <button class="btn btn-primary btn-sm">Unfollow</button>
+                        <form method="POST" action="/users/unfollow/{{ followed_user.id }}" id="follow-btns">
+                            <button class="btn btn-primary btn-sm" id="unfollow-btn">Unfollow</button>
                         </form>
                         {% else %}
                             {% if g.user.id != followed_user.id %}
-                            <form method="POST" action="/users/follow/{{ followed_user.id }}">
-                                <button class="btn btn-outline-primary btn-sm">Follow</button>
+                            <form method="POST" action="/users/follow/{{ followed_user.id }}" id="follow-btns">
+                                <button class="btn btn-outline-primary btn-sm" id="follow-btn">Follow</button>
                             </form>
-                            <p class="card-bio">{{ user.bio }}</p>
+                            
                             {% endif %}
                         {% endif %}
                     </div>

@@ -1,6 +1,9 @@
 {% extends 'users/profile.html' %}
 
 {% block user_details %}
+{% if posts|length == 0 %}
+    <h3 id="error-msg">No posts yet!</h3>
+{% else %}
 <div class="col-sm-6">
     <ul class="list-group" id="posts">
 
@@ -32,7 +35,7 @@
             {% if g.user.id != post.user.id %}
             <form action="/users/add_like/{{ post.id }}" method="POST" id="posts-form">
                 <button class="btn btn-sm {{ 'btn-primary' if post.id in likes else 'btn-secondary' }}">
-                    <i class="fa fa-thumbs-up"></i>
+                    <i class="fas fa-thumbs-up" id="like-btn"></i>
                 </button>
             </form>
             {% endif %}
@@ -47,5 +50,5 @@
         {% endfor %}
     </ul>
 </div>
-
+{% endif %}
 {% endblock %}

@@ -5,7 +5,9 @@
 <img src="{{ user.image_url }}" alt="User Image" class="card-image">
 <div class="col-sm-3" id="user-info">
     <h4 id="sidebar-username">~ {{ user.username }} ~</h4>
-    <p>{{ user.bio }}</p>
+    {% if user.bio %}
+    <p class="card-bio">{{ user.bio }}</p>
+    {% endif %}
     {% if user.location %}
     <p class="user-location"><span class="fa fa-map-marker">{{ user.location }}</span></p>
     {% endif %}
@@ -18,12 +20,12 @@
     </form>
     {% elif g.user %}
     {% if g.user.is_following(user) %}
-    <form method="POST" action="/users/unfollow/{{ user.id }}">
-        <button class="btn btn-primary">Unfollow</button>
+    <form method="POST" action="/users/unfollow/{{ user.id }}" id="follow-btns">
+        <button class="btn btn-primary" id="unfollow-btn">Unfollow</button>
     </form>
     {% else %}
-    <form method="POST" action="/users/follow/{{ user.id }}">
-        <button class="btn btn-outline-primary">Follow</button>
+    <form method="POST" action="/users/follow/{{ user.id }}" id="follow-btns">
+        <button class="btn btn-outline-primary" id="follow-btn">Follow</button>
     </form>
     {% endif %}
     {% endif %}

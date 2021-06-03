@@ -234,6 +234,15 @@ nav form.navbar-form {
   padding-top: 2px;
 }
 
+a {
+  color: purple;
+}
+
+a:hover {
+  color: plum;
+  text-decoration: none;
+}
+
 .user-card {
   width: 100%;
   border-radius: 25px;
@@ -241,6 +250,7 @@ nav form.navbar-form {
   padding-bottom: 2%;
   background: white;
   box-shadow: 2px 2px 2px plum;
+  align-items: center;
 }
 
 #username {
@@ -248,6 +258,17 @@ nav form.navbar-form {
   text-align: center;
   margin-top: 15px;
   margin-bottom: 0px;
+  color: black;
+}
+
+#username:hover {
+  color: purple;
+  text-decoration: underline;
+}
+
+.card-link {
+  text-decoration: none;
+  text-align: center;
 }
 
 /* Posts */
@@ -349,6 +370,17 @@ nav form.navbar-form {
   left: 160px;
 }
 
+#error-msg {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-bio {
+  color: rgba(128, 0, 128, 0.486);
+  text-align: center;
+}
+
 /* Edit Page */
 
 .edit-btn-area {
@@ -414,4 +446,45 @@ nav form.navbar-form {
 }
 #del-showPost-form .btn {
   border-radius: 20px;
+}
+
+.text-muted {
+  margin-left: 8px;
+}
+
+/* Follow/Unfollow */
+
+#follow-btns {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 2px;
+}
+
+#follow-btn {
+  background-color: plum;
+  border: 1.5px solid purple;
+  color: black;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+#follow-btn:hover {
+  background-color: purple;
+  box-shadow: 1px 1px 2px plum;
+  color: white;
+  position: relative;
+}
+
+#unfollow-btn {
+  background-color: plum;
+  border: 1.5px solid purple;
+  color: black;
+  border-radius: 20px;
+}
+#unfollow-btn:hover {
+  background-color: purple;
+  box-shadow: 2px 2px 2px plum;
+  color: white;
+  position: relative;
 }

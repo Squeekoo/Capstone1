@@ -1,24 +1,43 @@
 {% extends 'users/profile.html' %}
 
 {% block user_details %}
+{% if userLikes|length == 0 %}
+    <h3 id="error-msg">No likes yet!</h3>
+{% else %}
 <div class="col-lg-6 col-md-8 col-sm-12">
     <ul class="list-group" id="posts">
-        {% for post in likes %}
+
+        {% for post in userLikes %}
         <li class="list-group-item">
             <a href="/posts/{{ post.id }}" class="post-link"></a>
             <a href="/users/{{ post.user.id }}">
                 <img src="{{ post.user.image_url }}" alt="User Image" class="timeline-image">
             </a>
-            <div class="message-area">
+
+            <div class="post-area">
                 <a href="/users/{{ post.user.id }}">~ {{ post.user.username }} ~</a>
                 <span class="text-muted">{{ post.timestamp.strftime('%d %B %Y') }}</span>
+
                 <p>{{ post.text }}</p>
-                <p>{{ post.spotify_url }}</p>
+
+                {% if post.spotify_id %}
+                <img src="{{post.song['album']['images'][2]['url']}}" alt="Song cover art">
+                <div>
+                  <a href="{{post.song['external_urls']['spotify']}}">
+                    {{post.song["name"]}}
+                  </a>
+                    -
+                  <a href="{{post.song['artists'][0]['external_urls']['spotify']}}">
+                    {{post.song["artists"][0]["name"]}}
+                  </a>
+                </div>
+                {% endif %}
             </div>
+
             {% if user.id == g.user.id %}
             <form method="POST" action="/users/add_like/{{ post.id }}" id="posts-form">
                 <button class="btn btn-sm {{ 'btn-primary' }}">
-                    <i class="fa fa-thumbs-up"></i>
+                    <i class="fas fa-thumbs-up" id="like-btn"></i>
                 </button>
             </form>
             {% endif %}
@@ -26,4 +45,5 @@
         {% endfor %}
     </ul>
 </div>
+{% endif %}
 {% endblock %}
