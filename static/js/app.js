@@ -6,7 +6,7 @@ async function getSongs(evt) {
     evt.preventDefault();
     try {
         let songQuery = $("#song-query").val();
-        let res = await axios.post(`${BASE_URL}/songs`, JSON.stringify({ songQuery }),
+        let res = await axios.post(`//${BASE_URL}/songs`, JSON.stringify({ songQuery }),
             {
                 headers: {
                     'content-type': 'application/json'
