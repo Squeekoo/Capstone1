@@ -7,15 +7,18 @@ from models import db, connect_db, User, Post
 from forms import AddUserForm, LoginUserForm, EditUserForm, PostForm
 from sqlalchemy.exc import IntegrityError
 import os
+import psycopg2
 
 import pdb
 
 from spotify_client import *
 
 CURR_USER_KEY = "curr_user"
+DATABASE_URL = os.environ["DATABASE_URL"]
+conn = psycopg2.connect(DATABASE_URL, sslmode="require")
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///meh-blog"
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SECRET_KEY"] = "classics"
