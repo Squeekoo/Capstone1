@@ -409,9 +409,13 @@ a:hover {
   border: 1.5px solid purple;
 }
 
+#search-wrapper {
+  position: relative;
+}
+
 #search-song {
   position: absolute;
-  right: 450px;
+  right: 0;
   margin-top: -56px;
 }
 
