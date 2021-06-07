@@ -1,10 +1,13 @@
 import base64
 import datetime
 from urllib.parse import urlencode
-from secret import *
+import os
 
 import requests
 import pdb
+
+client_id = os.environ.get("CLIENT_ID")
+client_secret = os.environ.get("CLIENT_SECRET")
 
 
 class SpotifyAPI(object):
