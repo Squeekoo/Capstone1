@@ -375,6 +375,12 @@ a:hover {
   align-items: center;
   text-align: center;
 }
+#home-error-msg {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -160px;
+}
 
 .card-bio {
   color: rgba(128, 0, 128, 0.486);
