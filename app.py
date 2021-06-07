@@ -6,13 +6,11 @@ from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, Post
 from forms import AddUserForm, LoginUserForm, EditUserForm, PostForm
 from sqlalchemy.exc import IntegrityError
-from secret import client_id, client_secret
-import requests
+import os
 
 import pdb
 
 from spotify_client import *
-
 
 CURR_USER_KEY = "curr_user"
 
@@ -29,8 +27,8 @@ db.create_all()
 
 # Can use below to call class.
 # Example: "spotify.get_client_credentials()""
-client_id = client_id
-client_secret = client_secret
+client_id = os.environ.get("CLIENT_ID")
+client_secret = os.environ.get("CLIENT_SECRET")
 spotify = SpotifyAPI(client_id, client_secret)
 
 
