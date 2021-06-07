@@ -1,8 +1,6 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = window.location.host;
 const songList = $('#song-list');
 const songResults = $("#song-results");
-
-console.log("hello from app.js")
 
 async function getSongs(evt) {
     evt.preventDefault();
@@ -59,8 +57,6 @@ function handleResponse(res) {
         console.log(decodeJSONSongData);
 
         songList.html(buildHTML(eachSong[idxID], idxID));
-        // console.log(eachSong[idxID]);
-
 
         $("#post-form").append(`<input type="hidden" id="json-input" name="song-data" value="${decodeJSONSongData.id}" data-json="${jsonSongData}">`);
 
