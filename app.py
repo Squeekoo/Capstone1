@@ -191,7 +191,7 @@ def show_user(user_id):
     for post in posts:
         post.song = spotify.get_resource(post.spotify_id, resource_type="tracks")
 
-    likes = [post.id for post in user.likes]
+    likes = [post.id for post in g.user.likes]
 
     return render_template("users/show_user.html", user=user, posts=posts, likes=likes)
 
