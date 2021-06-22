@@ -4,7 +4,7 @@
 {% if userLikes|length == 0 %}
 {% if post.user %}
     <h3 id="error-msg">You have no likes yet!</h3>
-{% elif !post.user %}
+{% elif not post.user %}
     <h3 id="error-msg">{{ post.user.username }} has no likes yet!</h3>
 {% else %}
 <div class="col-lg-6 col-md-8 col-sm-12">
