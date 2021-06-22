@@ -2,7 +2,7 @@
 
 {% block user_details %}
 {% if user.following|length == 0 %}
-    {% if user %}
+    {% if user.id == g.user.id %}
     <h3 id="error-msg">You're not following anyone yet!</h3>
     {% elif user.id != g.user.id %}
     <h3 id="error-msg">{{ user.username }} is not following anyone yet!</h3>

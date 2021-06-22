@@ -2,7 +2,7 @@
 
 {% block user_details %}
 {% if userLikes|length == 0 %}
-    {% if user %}
+    {% if user.id == g.user.id %}
     <h3 id="error-msg">You have no likes yet!</h3>
     {% elif user.id != g.user.id %}
     <h3 id="error-msg">{{ user.username }} has no likes yet!</h3>
