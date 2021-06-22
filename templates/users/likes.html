@@ -34,13 +34,13 @@
                 {% endif %}
             </div>
 
-            
+            {% if user.id == g.user.id %}
             <form method="POST" action="/users/add_like/{{ post.id }}" id="posts-form">
-                <button class="btn btn-sm {{ 'btn-primary' if post.id in userLikes else 'btn-secondary' }}">
+                <button class="btn btn-sm {{'btn-primary' if post.id in userLikes else 'btn-secondary'}}">
                     <i class="fas fa-thumbs-up" id="like-btn"></i>
                 </button>
             </form>
-            
+            {% endif %}
         </li>
         {% endfor %}
     </ul>
