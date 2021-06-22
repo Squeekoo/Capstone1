@@ -4,7 +4,7 @@
 {% if posts|length == 0 %}
     {% if user %}
     <h3 id="error-msg">You have no posts yet!</h3>
-    {% elif not user %}
+    {% elif user.id != g.user.id %}
     <h3 id="error-msg">{{ user.username }} has no posts yet!</h3>
     {% endif %}
 {% else %}

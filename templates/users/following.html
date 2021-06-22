@@ -4,7 +4,7 @@
 {% if user.following|length == 0 %}
     {% if user %}
     <h3 id="error-msg">You're not following anyone yet!</h3>
-    {% elif not user %}
+    {% elif user.id != g.user.id %}
     <h3 id="error-msg">{{ user.username }} is not following anyone yet!</h3>
     {% endif %}
 {% else %}
