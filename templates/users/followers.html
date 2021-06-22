@@ -2,7 +2,10 @@
 
 {% block user_details %}
 {% if user.followers|length == 0 %}
+{% if user %}
     <h3 id="error-msg">You have no followers yet!</h3>
+{% elif !user %}
+    <h3 id="error-msg">{{ user.username }} has no followers yet!</h3>
 {% else %}
 <div class="col-sm-9">
     <div class="row">
