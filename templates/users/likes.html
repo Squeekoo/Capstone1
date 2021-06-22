@@ -2,10 +2,10 @@
 
 {% block user_details %}
 {% if userLikes|length == 0 %}
-    {% if post.user %}
+    {% if user %}
     <h3 id="error-msg">You have no likes yet!</h3>
-    {% elif not post.user %}
-    <h3 id="error-msg">{{ post.user.username }} has no likes yet!</h3>
+    {% elif not user %}
+    <h3 id="error-msg">{{ user.username }} has no likes yet!</h3>
     {% endif %}
 {% else %}
 <div class="col-lg-6 col-md-8 col-sm-12">

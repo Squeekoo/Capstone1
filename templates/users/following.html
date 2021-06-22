@@ -6,7 +6,7 @@
     <h3 id="error-msg">You're not following anyone yet!</h3>
     {% elif not user %}
     <h3 id="error-msg">{{ user.username }} is not following anyone yet!</h3>
-{   % endif %}
+    {% endif %}
 {% else %}
 <div class="col-sm-9">
     <div class="row">
