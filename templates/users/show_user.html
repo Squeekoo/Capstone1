@@ -19,7 +19,7 @@
                 <a href="/users/{{ user.id }}">~ {{ user.username }} ~</a>
                 <span class="text-muted">{{ post.timestamp.strftime('%d %B %Y') }}</span>
                 <p>{{ post.text }}</p>
-                {% post.spotify_id %}
+                {% if post.spotify_id %}
                 <img src="{{post.song['album']['images'][2]['url']}}" alt="Song cover art">
                 <div>
                     <a href="{{post.song['external_urls']['spotify']}}">
