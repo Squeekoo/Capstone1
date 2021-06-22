@@ -39,9 +39,7 @@ class Likes(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"))
 
-    post_id = db.Column(
-        db.Integer, db.ForeignKey("posts.id", ondelete="CASCADE"), unique=True
-    )
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id", ondelete="CASCADE"))
 
 
 class User(db.Model):

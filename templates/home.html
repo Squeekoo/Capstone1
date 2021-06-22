@@ -71,7 +71,6 @@
               </div>              
               {% endif %}  
             </div>
-            
             <form method="POST" action="/users/add_like/{{ post.id }}" id="posts-form">
               <button class="btn btn-sm {{'btn-primary' if post.id in likes else 'btn-secondary'}}">
                 <i class="fas fa-thumbs-up" id="like-btn"></i> 
