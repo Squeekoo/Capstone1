@@ -1,6 +1,9 @@
 {% extends 'users/profile.html' %}
 
 {% block user_details %}
+{% if user.following|length == 0 %}
+    <h3 id="error-msg">You're not following anyone yet!</h3>
+{% else %}
 <div class="col-sm-9">
     <div class="row">
 
