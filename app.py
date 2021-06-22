@@ -16,12 +16,13 @@ from spotify_client import *
 CURR_USER_KEY = "curr_user"
 DATABASE_URL = os.environ["DATABASE_URL"]
 conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+SECRET_KEY = os.environ["APP_SECRET_KEY"]
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
-app.config["SECRET_KEY"] = "classics"
+app.config["SECRET_KEY"] = SECRET_KEY
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
 debug = DebugToolbarExtension(app)
 

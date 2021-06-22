@@ -32,13 +32,13 @@
                 </div> 
             </div>
 
-            {% if g.user.id != post.user.id %}
+           
             <form action="/users/add_like/{{ post.id }}" method="POST" id="posts-form">
                 <button class="btn btn-sm {{ 'btn-primary' if post.id in likes else 'btn-secondary' }}">
                     <i class="fas fa-thumbs-up" id="like-btn"></i>
                 </button>
             </form>
-            {% endif %}
+            
             {% if g.user.id == post.user.id %}
             <form method="POST" action="/posts/{{ post.id }}/delete" id="del-posts-form">
                 <button class="btn btn-sm btn-danger">
