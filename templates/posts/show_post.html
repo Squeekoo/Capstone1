@@ -13,7 +13,7 @@
                     <div>
                         <a href="/users/{{ post.user.id }}" id="post-username">~ {{ post.user.username }} ~</a>
                         {% if g.user %}
-                            <form action="/users/add_like/{{ post.id }}">
+                            <form method="POST" action="/users/add_like/{{ post.id }}" id="posts-form">
                                 <button class="btn btn-sm {{'btn-primary' if post.id in post.user.likes else 'btn-secondary'}}">
                                     <i class="fas fa-thumbs-up" id="like-btn"></i>
                                 </button>
