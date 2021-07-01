@@ -9,7 +9,7 @@
 
 # [MuMe](https://musicandmentalhealth.herokuapp.com/)
 
-[MuMe](https://musicandmentalhealth.herokuapp.com/) is a Music & Mental Health Community designed as a safe space for people to publicly express themselves. Members can use [MuMe](https://musicandmentalhealth.herokuapp.com/) as a virtual journal as well as a social platform to discover others who may be able to relate to their content.
+[MuMe](https://musicandmentalhealth.herokuapp.com/) is a Music & Mental Health Community designed as a safe space for people to publicly express themselves through music to complement written words. Members can use [MuMe](https://musicandmentalhealth.herokuapp.com/) as a virtual journal as well as a social platform to discover others who may be able to relate to their content.
 
 What makes [MuMe](https://musicandmentalhealth.herokuapp.com/) special is the members' ability to search for a song (based on their current mood) and add it to their posts. With music being a universal language, I believe people sharing a song that represents their current mood can be more powerful than spoken (or in this case, written) words.
 
